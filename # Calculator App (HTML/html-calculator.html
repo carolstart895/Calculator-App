@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculator</title>
+<style>
+  body{margin:0;background:#0b1220;color:#e6eef8;font:16px/1.6 system-ui;display:grid;place-items:center;min-height:100vh}
+  .calc{background:#121a2b;border:1px solid #1e2a44;border-radius:20px;padding:20px;width:300px}
+  input{width:100%;font-size:1.5rem;text-align:right;margin-bottom:10px;padding:8px;border:none;border-radius:10px;background:#10192c;color:#fff}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  button{padding:14px;border:none;border-radius:10px;font-size:1rem;background:#1c2a45;color:#e6eef8}
+  button.op{background:#1d74e4;color:#fff}
+</style>
+</head>
+<body>
+  <div class="calc">
+    <input id="display" readonly>
+    <div class="grid">
+      <button>7</button><button>8</button><button>9</button><button class="op">/</button>
+      <button>4</button><button>5</button><button>6</button><button class="op">*</button>
+      <button>1</button><button>2</button><button>3</button><button class="op">-</button>
+      <button>0</button><button>.</button><button class="op">=</button><button class="op">+</button>
+    </div>
+  </div>
+<script>
+  const d = document.getElementById('display');
+  document.querySelectorAll('button').forEach(b=>{
+    b.onclick=()=>{
+      if(b.textContent==='='){ try{d.value=eval(d.value)}catch{d.value='Err'} }
+      else d.value += b.textContent;
+    };
+  });
+</script>
+</body>
+</html>
